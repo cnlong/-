@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+		var oDiv = document.getElementById('pop');
+		var oBtn = document.getElementById('btn');
+		var oPop_tip = document.getElementById('pop_tip');
+		var iTime = 5;
+		oBtn.onclick = function(){
+			oDiv.style.display = 'block';
+			var timer = setInterval(function(){
+				iTime --;
+				alert(iTime);
+				oPop_tip.innerHTML = "还有"+ iTime + "秒钟关闭弹框";
+				alert(iTime);
+				if (iTime == 0){
+					oDiv.style.display = 'none';
+					clearInterval(timer);
+					iTime = 5;
+					oPop_tip.innerHTML = "还有"+ iTime + "秒钟关闭弹框";
+
+				}
+			}, 1000)
+		}
+		
+	}
+
+	</script>
+	<style type="text/css">
+		.menu{
+			height: 80px;
+			width: 960px;
+			background-color: gold;
+			position: fixed;
+			top: 0px;
+			/* 水平居中 
+			margin:auto无法生效*/
+			left: 50%;
+			margin-left: -480px;
+		}
+		.popup{
+			width: 500px;
+			height: 300px;
+			border: 1px solid #000;
+			color: #fff;
+			position: fixed;
+			/* 水平居中 */
+			left: 50%;
+			margin-left: -251px;
+			/* 垂直居中 */
+			top: 50%;
+			margin-top: -151px;
+			z-index: 9999;
+		}
+		.popup h2{
+			background-color: gold;
+			margin: 10px;
+			height: 40px;
+		}
+		.mask{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			left: 0px;
+			top: 0px;
+			/* 透明度 */
+			opacity: 0.5;
+			z-index: 9998;
+		}
+		.pop_con{
+			display: none;
+		}
+		
+
+		p{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="menu">菜单文字</div> -->
+	<div class="pop_con" id="pop">
+	<div class="popup"><h2>弹框的标题</h2>
+    <br>
+    <br>
+    <br>
+    <p id="pop_tip">还有5秒钟关闭弹框</p>
+	</div>
+    <div class="mask"></div>
+    </div>
+    <input type="button" name="" value="弹出弹框" id="btn">
+	<p>网页正文</p>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<p>网页正文</p>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<p>网页正文</p>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<p>网页正文</p>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<p>网页正文</p>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			//oDiv1.style.color = 'red';
+			var sMystyle = 'color';
+			var sValue = 'red';
+			oDiv1.style[sMystyle] = sValue;
+			oDiv1.style.fontSize = '40px';
+			var sTr = oDiv1.innerHTML;
+			alert(sTr);
+			oDiv1.innerHTML = "<a href='#'>这是修改后的文字</a>";
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">asdzxc</div>
+</body>
+</html>

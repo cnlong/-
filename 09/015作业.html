@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+		     var oInput01 = document.getElementById('input01');
+		     var oInput02 = document.getElementById('input02');
+		     var oBtn = document.getElementById('btn01');
+		
+
+		    oBtn.onclick = function(){
+			    var iNum01 = parseInt(oInput01.value);
+		        var iNum02 = parseInt(oInput02.value);
+			    var sum = iNum02 + iNum01;
+			    alert(sum);
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="input01"> +
+	<input type="text" name="" id="input02"> 
+	<input type="button" name="" id="btn01" value="相加">
+
+</body>
+</html>

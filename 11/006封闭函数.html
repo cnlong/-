@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 封闭函数
+		(function(){
+			//alert('hello, world!');
+		})()
+
+		var iNum01 =12;
+
+		function myalert02(){
+			alert('hello, world!');
+		}
+
+		(function(){
+			var iNum01 = 24;
+			function myalert02(){
+			alert('hello, hello!');
+		}
+		    alert(iNum01);
+			myalert02();
+		})();
+
+		alert(iNum01);
+		myalert02();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

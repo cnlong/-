@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var iNum01 = 12;
+		var iNum02 = '24';
+		var sTr = 'abc';
+		// 字符串拼接
+		alert(iNum01+iNum02);
+		alert(iNum02+sTr);
+		// 将数字字符串转化为整数或者小数
+		var sTr02 = '12.35';
+		alert(parseInt(sTr02));
+		alert(parseFloat(sTr02));
+		var sTr03 = '2017-4-22';
+		var aRr = sTr03.split('-');
+		alert(aRr);
+		var sTr04 = '#div';
+		var sTr05 = sTr04.charAt(0);
+		alert(sTr05);
+		var sTr06 = 'abcdef microsoft asdasd';
+		var iNum03 = sTr06.indexOf('microsoft');
+		alert(iNum03); // 存在弹出索引值7，不存在弹出-1
+		var sTr07 = 'abcdef123456fgt';
+		var sTr08 =sTr07.substring(6, 12);
+		alert(sTr08);
+
+		// 字符串反转
+		var sTr09 = 'abcdefghijklmn';
+		var sTr10 = sTr09.split('').reverse().join('');
+		alert(sTr10);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

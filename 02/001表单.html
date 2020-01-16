@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+</head>
+<body>
+	<h1>注册表单</h1>
+	<form action="">
+		<div>
+		<label for="username">用户名：</label>
+		<input type="text" name="username" id="username" />
+		</div>
+
+        <div>
+		<label for="password">密  码：</label>
+		<input type="password" name="" id="password">
+		</div>
+
+		<div>
+		<label>性  別：</label>
+		<input type="radio" name="gender" value="男" id="男"><label for="男">男</label>
+		<input type="radio" name="gender" value="女" id="女"><label for="女">女</label>
+		</div>
+
+		<div>
+		<label>爱  好：</label>
+		<input type="checkbox" name="like" value="0">学习
+		<input type="checkbox" name="like" value="1">逛街
+		<input type="checkbox" name="like" value="2">python
+		<input type="checkbox" name="like" value="3">前端
+		<input type="checkbox" name="like" value="4">LOL
+		</div>
+
+		<div>
+			<label>玉  照：</label>
+			<input type="file" name="">
+		</div>
+
+		<input type="hidden" name="key1" value="value1">
+
+		<div>
+			<label>个人介绍：</label>
+			<textarea name="introduce"></textarea>
+		</div>
+		<div>
+			<label>籍  贯：</label>
+			<select name="site">
+				<option value="0">北京</option>
+				<option value="1">上海</option>
+				<option value="2">广东</option>
+			</select>
+		</div>
+
+		<div>
+			<input type="submit" name="" value="确认">
+			<!-- <input type="image" src="xxx.jpg"> -->
+		</div>
+
+		<div>
+			<input type="reset" name="" value="重传">
+		</div>
+	</form>	
+</body>
+</html>

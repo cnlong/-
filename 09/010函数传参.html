@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		// function myalert(a){
+		// 	alert(a);
+		// }
+
+		// myalert('aaa');
+    window.onload = function(){
+
+		function fnChangestyle(mystyle, value){
+			var oDiv = document.getElementById('div1');
+			oDiv.style[mystyle] = value;
+		}
+
+		fnChangestyle('color', 'cyan');
+		fnChangestyle('fontSize', '30px');
+		fnChangestyle('backgroundColor', 'pink');
+	}
+
+	</script>
+</head>
+<body>
+	<div id="div1">这是一个div元素</div>
+</body>
+</html>

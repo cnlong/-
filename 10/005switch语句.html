@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/skin01.css" id="link01">
+	<script type="text/javascript">
+		window.onload = function(){
+			var iWeek = 3;
+			var oBody = document.getElementById('body01');
+			/*var oBtn01 = document.getElementById('btn01');
+			var oBtn02 = document.getElementById('btn02');
+			var oLink = document.getElementById('link01');
+			oBtn01.onclick = function(){
+				oLink.href = "css/skin01.css";
+			}
+			oBtn02.onclick = function(){
+				oLink.href = "css/shin02.css";
+			}*/
+			switch (iWeek){
+				case 1:
+				    oBody.style.backgroundColor = 'gold';
+				    break;
+				case 2:
+				    oBody.style.backgroundColor = 'green';
+				    break;
+				case 3:
+				    oBody.style.backgroundColor = 'pink';
+				    break;
+				case 4:
+				    oBody.style.backgroundColor = 'yellogreen';
+				    break;
+				case 5:
+				    oBody.style.backgroundColor = 'blue';
+				    break;
+				default:
+				    oBody.style.backgroundColor = 'cyan';
+			}
+		}
+	</script>
+</head>
+<body id="body01">
+	<input type="button" name="" value="皮肤1" id="btn01">
+	<input type="button" name="" value="皮肤2" id="btn02">
+</body>
+</html>

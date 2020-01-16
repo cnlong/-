@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			function fnTimelsft(){
+				// 实际开发中需要读取后台的时间，可以通过ajax来读取
+			var sNow = new Date();
+			
+			// 未来时间。2月22号晚24点,月份又是从0到11，需要减去1
+			var sFuture = new Date(2020, 0, 22, 24, 0, 0);
+			
+			// 计算还有多少秒 sFuture - sNow得出的单位是毫秒，并且取整
+			var sLeft = parseInt((sFuture - sNow)/1000);
+			
+			// 计算天数
+			var iDays = parseInt(sLeft/86400);
+			
+			// 计算小时
+			var iHours = parseInt((sLeft%86400)/3600);
+			// 计算分钟
+			var iMinutes = parseInt(((sLeft%86400)%3600)/60);
+			// 计算秒,总秒数/整秒数，剩余的余数
+			var iSeconds = sLeft%60;
+
+			var sTr = '距离放假还剩：' + fnTodou(iDays) + '天'+ fnTodou(iHours) + '时' + fnTodou(iMinutes) + '分' + fnTodou(iSeconds) + '秒';
+            oDiv.innerHTML = sTr;
+			}
+			fnTimelsft();
+			setInterval(fnTimelsft,1);
+		}
+		function fnTodou(n){
+			if (n < 10){
+				return '0'+n;
+			}
+			else{
+				return n;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

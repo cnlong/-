@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oUl = document.getElementById('list01');
+	    	var aList = ['美人鱼', '疯狂动物城', '魔兽', '美国队长3', '湄公河行动'];
+	    	var iLen = aList.length;
+	    	var sTr = '';
+	    	for(var i=0;i<iLen;i++)
+	    	{
+                 sTr += '<li>' + aList[i] + '</li>';
+	    	}
+	    	// alert(sTr);
+	    	oUl.innerHTML = sTr;
+
+	}
+	</script>
+	<style type="text/css">
+		.list{
+			list-style: none;
+			width: 300px;
+			height: 300px;
+			margin: 50px auto 0;
+			padding: 0;
+			border-bottom: 1px dotted #000;
+		}
+		.list li{
+			height: 60px;
+			border-bottom: 1px dotted #000;
+			line-height: 60px;
+			font-size: 16px;
+
+		}
+	</style>
+</head>
+<body>
+	<ul class="list" id="list01">
+		<!-- <li>美人鱼</li>
+		<li>疯狂动物城</li>
+		<li>魔兽</li>
+		<li>美国队长3</li>
+		<li>湄公河行动</li> -->
+	</ul>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width" name="viewport"/>
+<title>请输入验证码 ws:221.226.49.186</title>
+<link href="/new_index.css" rel="stylesheet" type="text/css"/>
+<script src="/jquery-1.10.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="pop">
+<p class="title">访问过于频繁，本次访问做以下验证码校验  （221.226.49.186）</p>
+<div class="main">
+<div class="code_img">
+<span>请在五分钟内完成验证</span>
+</div>
+<div class="code_num">
+<input class="btn_tj" id="btnSubmit" type="button" value="点击按钮进行验证"/>
+</div>
+<div class="toast_mess" id="errmsg"></div>
+<div id="ISDCaptcha"></div>
+</div>
+</div>
+<div class="footer">
+		©  <a href="http://www.58.com">58.COM</a> </div>
+<input id="sessionId" type="hidden" value=""/>
+<input id="serialId" type="hidden" value="2728e1f6555e327f16f31d4ed1c7f56a_3e073116d82e454d8e46022df1604cdb"/>
+<input id="code" type="hidden" value="22"/>
+<input id="sign" type="hidden" value="216d1b1444e43926c5bb22168568e3fe"/>
+<input id="url" type="hidden" value="https://nj.58.com/pinpaigongyu/pn/1/?minprice=2000_4000"/>
+<input id="namespace" type="hidden" value="ppgy_pc_list"/>
+<input id="ip" type="hidden" value="221.226.49.186"/>
+</body>
+<script src="//j1.58cdn.com.cn/resource/xxzl/captcha/js/isd_captcha_v20191023113035.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//统计pv
+	pv();
+	
+	var namespace = $("#namespace").val();
+	var uuid = $("#uuid").val();
+	var url = $("#url").val();
+	var verify_code = $("#verify_code").val();
+	var ip = $("#ip").val();
+	var serialId = $("#serialId").val();
+	var code = $("#code").val();
+	var sign =$("#sign").val();
+	respMessage = $.ajax({
+		url : "/antibot/codev2/getsession.do?"+new Date().getTime(),
+		data :{serialId:serialId,code:code,sign:sign,url:url},
+		type : "POST",
+		async : true,
+		success : function(results) {
+			var parsedJson = jQuery.parseJSON(results);
+			if (parsedJson.code === 0 && parsedJson.data != null) {
+				var captcha = ISDCaptcha({
+					'element' : 'ISDCaptcha',
+					'width' :parsedJson.data.width ,//宽度
+					'type' : parsedJson.data.level,//验证码级别
+					'showType'   : 'win', //  ['embed', 'trigger', 'win']//如果不传此值，默认为嵌入式.embed：嵌入式.trigger：触发式.win:弹出式
+					'sessionId' : parsedJson.data.sessionId,
+					'targetElm':'btnSubmit',//只对弹出式有效,如果是根据后端策略确定是否为弹出时
+					//'winAutoShow':true,//弹出式时添加此属性会自动弹出,默认为false,不自动弹出
+					'successCallback' : function successCallback(data) {
+
+						respMessage = $.ajax({
+							url : "checkcode.do",
+							data : {
+                                namespace : namespace,
+                                sessionId : parsedJson.data.sessionId,
+                                url : url,
+                                successToken : data.successToken,
+                                uuid:uuid,
+                                serialId:serialId
+                            },
+							type : "POST",
+							async : true,
+							success : function(results) {
+								var parsedJson = jQuery.parseJSON(results);
+								if (parsedJson.code === 0) {
+									var redLocation = parsedJson.msg;
+									if(redLocation.indexOf("http://")==-1 && redLocation.indexOf("https://")==-1){
+										redLocation = "http://"+redLocation;
+									}
+									window.location.href = redLocation;
+								} else {
+									$("#errmsg").html(parsedJson.msg);
+									
+								}
+							}
+						});
+					},
+					'failCallback' : function failCallback(data) {
+						//alert(data.responseId);
+					}
+				})
+				captcha.init();
+			} else {
+			    if(parsedJson.data == null){
+                    $("#errmsg").html(parsedJson.msg);
+				}else{
+                    $("#errmsg").html(parsedJson.msg);
+                    var reLocation = parsedJson.data;
+                    if(reLocation.indexOf("http://")==-1 && reLocation.indexOf("https://")==-1){
+                        reLocation = "http://"+reLocation;
+                    }
+                    setInterval(function(){
+                        window.location.href = reLocation;
+                        }, 5000);
+
+				}
+
+				
+			}
+		}
+	});
+	
+	function pv () {  
+	    var params = {};  
+	    //Document对象数据  
+	    if(document) {  
+	        params.domain = document.domain || '';   
+	        params.url = document.URL || '';   
+	        params.title = document.title || '';   
+	        params.referrer = document.referrer || '';   
+	    }     
+	    //Window对象数据  
+	    if(window && window.screen) {  
+	        params.sh = window.screen.height || 0;  
+	        params.sw = window.screen.width || 0;  
+	        params.cd = window.screen.colorDepth || 0;  
+	    }     
+	    //navigator对象数据  
+	    if(navigator) {  
+	        params.lang = navigator.language || '';   
+	    }     
+	   
+	    // 其他参数  
+	    var date = new Date();  
+	    params.ltime = date.getTime() / 1000;  
+	    //拼接参数串  
+	    var args = '';   
+	    for(var i in params) {  
+	        if(args != '') {  
+	            args += '&';  
+	        }     
+	        args += i + '=' + encodeURIComponent(params[i]);  
+	    }     
+	   
+	    //通过Image对象请求后端脚本  
+	    var img = new Image(1, 1);   
+	    img.src = '/fwdata/load.gif?' + args;  
+	}
+});
+
+</script>
+</html>
